@@ -1,5 +1,5 @@
 # M5Stack_MMD
-3D drawing by M5Stack<br>
+3D rendering by M5Stack<br>
  ![MMD](doc/MMD.jpg)
  
 ## Prepare
