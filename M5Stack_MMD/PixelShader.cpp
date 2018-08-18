@@ -233,10 +233,7 @@ void PixelShader::SetMaterial(Material* material) {
   else {
     textureFileAvailable = true;
     String filename = String((char*)this->material.texture_file_name);
-    for (int i = 0; i < numTexture; ++i) if (filename == textureFilename[i]) file_start = textureFile[i];
-//    if (filename == "txEpron.bmp") file_start = txEpron_bmp;
-//    else if (filename == "txSh216.bmp") file_start = txSh216_bmp;
-    
+    for (int i = 0; i < numTexture; ++i) if (filename == textureFilename[i]) file_start = textureFile[i];  
     file = file_start;
     file = file_start + 10;
     file_read((uint8_t*)&header_offset, sizeof(header_offset));
