@@ -14,4 +14,4 @@ see [VPVP wiki](https://www6.atwiki.jp/vpvpwiki)
  
 ## Future
 This code includes MMD model data (PMD file) as constant arrays. It can't deal PMD file in SD card at a sufficient speed because of insufficient RAM. 
-If M5Stack FIRE with 2M PSRAM can be used, I will realize to draw any 3D models at higher speed.
+If M5Stack FIRE with 2M PSRAM can be used, I will realize to draw any 3D models in SD card at higher speed.
