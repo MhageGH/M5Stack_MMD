@@ -12,7 +12,7 @@ bool bitmap_out = false;  // if you need to output bitmap file to SD card, enabl
 void setup(){
   M5.begin();
   delay(100);
-  Serial.begin(115200);
+  //Serial.begin(115200); // Don't call it! M5.begin() includes it. If it is called again, some problems occcurs as freeze.
   pixelShader = new PixelShader();
   pmdLoader = new PmdLoader(Shanghai_pmd);
 }
