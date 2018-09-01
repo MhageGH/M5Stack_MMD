@@ -1,8 +1,6 @@
 # M5Stack_MMD
 3D rendering by M5Stack<br>
  ![MMD](doc/MMD.jpg)<br>
- 
-Movie for M5StackFIRE_MMD https://twitter.com/Tw_Mhage/status/1035519200834465792
 
 ## Prepare
 - [M5Stack](https://www.switch-science.com/catalog/3647/)  : Switch Science (for M5Stack_MMD)
@@ -31,6 +29,8 @@ M5Stack FIRE has 4M PSRAM. It can realize to draw any 3D models in SD card.
 - You can specify PMD file in SD card in M5StackFIRE_MMD.ino<br>
   PMD file name and Texture file name must be ASCII.<br>
   Texture file type must be be 16bit ARGB(1-5-5-5) 128x128 pixel BITMAP.
+- Rendering speed : About 27000 polygons per second.<br>
+  see the [movie](https://twitter.com/Tw_Mhage/status/1035519200834465792) (The model includes 8880 polygon)
   
 ## About MMD
 - see [VPVP wiki](https://www6.atwiki.jp/vpvpwiki) to know MMD
