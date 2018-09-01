@@ -169,10 +169,10 @@ void PixelShader::DrawHLine(int32_t x, int32_t y, int32_t w, Polygon* polygon) {
         uint16_t tex_color;
         int tx_y = txHeight - 1 - (int)(txHeight*texture_uv.y);
         int tx_x = (int)(txWidth*texture_uv.x);
-        if (tx_y < 0) tx_y = 0;
-        if (tx_y > txHeight - 1) tx_y = txHeight - 1;
-        if (tx_x < 0) tx_x = 0;
-        if (tx_x > txWidth - 1) tx_x = txWidth - 1;
+
+	tx_x &= txWidth-1;
+	tx_y &= txHeight-1;
+	
         tex_color = txBuffer[tx_y*txWidth + tx_x];
         
         if ((tex_color & 0x8000) == 0) alpha = true;
