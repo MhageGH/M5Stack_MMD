@@ -7,6 +7,8 @@
 PixelShader* pixelShader;
 PmdLoader* pmdLoader = 0;
 
+// GitHub Desktop test
+
 bool bitmap_out = false;  // if you need to output bitmap file to SD card, enable it.
 
 void setup(){
