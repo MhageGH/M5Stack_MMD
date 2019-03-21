@@ -48,7 +48,7 @@ void PixelShader::CreateNormal(Polygon* polygon) {
 }
 
 uint16_t DecayBrightness(uint16_t color, float rate){
-  rate = abs(rate);
+  rate = fabs(rate);
   if (rate < 0) rate = 0;
   if (rate > 1) rate = 1;
   byte r = 0x1F & (color >> 11);
