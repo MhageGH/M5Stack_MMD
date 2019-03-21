@@ -20,7 +20,7 @@
   BITMAP file type has to be 16bit ARGB(1-5-5-5) and the sizes of the files must be same.<br>
   And you should take care ROM size of hardware.
 
-note: This code includes MMD model data (PMD file) as constant arrays. Normal M5Stack can't deal PMD file in SD card at a sufficient speed because of insufficient RAM. 
+note: This code includes MMD model data (PMD file) as constant arrays. Normal M5Stack can't deal PMD file in SD card at a sufficient speed because of insufficient RAM. It takes <b>3 minites</b> to open this files including the large constant arrays by Arduino IDE. 
 
 ## About M5StackFIRE_MMD
 M5Stack FIRE has 4M PSRAM. It can realize to draw any 3D models in SD card.
