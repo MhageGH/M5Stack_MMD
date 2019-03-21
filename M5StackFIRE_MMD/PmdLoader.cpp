@@ -84,8 +84,21 @@ void PmdLoader::GetMaterial(Material* material) {
   uint16_t b = (uint16_t)((float)0x1Fu*B); 
   material->color = (r << 11) | (g << 5) | b;
   for (int i = 0; i < 20; ++i) {
-    if (pmdMaterial.texture_file_name[i] != '*') material->texture_file_name[i] = pmdMaterial.texture_file_name[i];
-    else material->texture_file_name[i] = 0;
+    if (pmdMaterial.texture_file_name[i] == '*') {
+      material->texture_file_name[i] = 0;
+      break;
+    }
+    material->texture_file_name[i] = pmdMaterial.texture_file_name[i];
+    const char sph[] = ".sph";
+    bool sph_match = false;
+    if ((i < 20 - strlen(sph)) && (strncmp((char*)(pmdMaterial.texture_file_name + i), sph, strlen(sph)) == 0)) sph_match = true;
+    const char spa[] = ".spa";
+    bool spa_match = false;
+    if ((i < 20 - strlen(spa)) && (strncmp((char*)(pmdMaterial.texture_file_name + i), spa, strlen(spa)) == 0)) spa_match = true;
+    if (sph_match || spa_match) {
+      material->texture_file_name[0] = 0;
+      break;
+    }
   }
   material->texture_file_name[20] = 0;
   material->face_vert_count = pmdMaterial.face_vert_count;
@@ -124,6 +137,10 @@ void PmdLoader::GetTextures(Material* materials, Texture* textures) {
     if (existing) continue;
     memcpy(textures[k].texture_file_name, materials[i].texture_file_name, sizeof(materials[i].texture_file_name));
     uint32_t header_offset, biWidth, biHeight;
+    if (SD.exists("/" + String((char*)textures[k].texture_file_name)) == false) {
+      Serial.println("Texture file " + String((char*)textures[k].texture_file_name) + " not found!");
+      while(1);
+    }
     file = SD.open("/" + String((char*)textures[k].texture_file_name));
     file.seek(10);
     file.read((uint8_t*)&header_offset, sizeof(header_offset));
