@@ -24,9 +24,10 @@ note: This code includes MMD model data (PMD file) as constant arrays. Normal M5
 
 ## About M5StackFIRE_MMD
 M5Stack FIRE has 4M PSRAM. It can realize to draw any 3D models in SD card.
-- You can move, rotate, or scale the 3D model by rewriting MatrixFactory.h.
+- You can move, rotate, or scale the 3D model by moving M5Stack body like AR.
 - You can save the screen as bitmap file to SD card by uncomment the last lines in M5StackFIRE_MMD.ino.
 - You can specify PMD file in SD card in M5StackFIRE_MMD.ino<br>
+  　：　mesh = new Mesh("/Shanghai.pmd");<br>
   PMD file name and Texture file name must be ASCII.<br>
   Texture file type must be be 16bit ARGB(1-5-5-5) 128x128 pixel BITMAP.
 - Rendering speed : About 27000 polygons per second.<br>
