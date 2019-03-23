@@ -1,11 +1,10 @@
-#ifndef _MATRIXFACTORY_H
-#define _MATRIXFACTORY_H
+#ifndef _SIMPLEMOTION_H
+#define _SIMPLEMOTION_H
 #include "Affine.h"
 
-class MatrixFactory {
-  MatrixFactory ();
+class SimpleMotion {
 public : 
-  static void CreateMatrix(Matrix* matrix, Matrix* matrixR, float t) {
+  void CreateMatrix(Matrix* matrix, Matrix* matrixR, float t) {
     Matrix matrixScale, matrixRy, matrixRx, matrixT, matrixTR;
     Affine::CreateRotationMatrixX(0.95*PI, &matrixRx);
     Affine::CreateRotationMatrixY((-0.3 + 0.2*t)*PI, &matrixRy);
@@ -17,5 +16,5 @@ public :
   }
 };
 
-#endif // _MATRIXFACTORY_H
+#endif // _SIMPLEMOTION_H
 

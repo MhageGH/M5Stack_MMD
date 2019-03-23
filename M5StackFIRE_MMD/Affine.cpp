@@ -31,10 +31,10 @@ float Affine::Dot(Vector* vector1, Vector* vector2) {
 }
 
 void Affine::CreateTranslationMatrix(float x, float y, float z, Matrix* matrixOut) {
-  matrixOut->m11 = 1; matrixOut->m12 = 0; matrixOut->m13 = 0, matrixOut->m14 = x;
-  matrixOut->m21 = 0; matrixOut->m22 = 1; matrixOut->m23 = 0, matrixOut->m24 = y;
-  matrixOut->m31 = 0; matrixOut->m32 = 0; matrixOut->m33 = 1, matrixOut->m34 = z;
-  matrixOut->m41 = 0; matrixOut->m42 = 0; matrixOut->m43 = 0, matrixOut->m44 = 1;
+  matrixOut->m11 = 1; matrixOut->m12 = 0; matrixOut->m13 = 0; matrixOut->m14 = x;
+  matrixOut->m21 = 0; matrixOut->m22 = 1; matrixOut->m23 = 0; matrixOut->m24 = y;
+  matrixOut->m31 = 0; matrixOut->m32 = 0; matrixOut->m33 = 1; matrixOut->m34 = z;
+  matrixOut->m41 = 0; matrixOut->m42 = 0; matrixOut->m43 = 0; matrixOut->m44 = 1;
 }
 
 void Affine::CreateRotationMatrixX(float theta, Matrix* matrixOut) {

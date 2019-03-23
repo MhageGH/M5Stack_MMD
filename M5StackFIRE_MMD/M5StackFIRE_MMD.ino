@@ -1,27 +1,43 @@
 #include <M5Stack.h>
 #include "PixelShader.h"
-#include "MatrixFactory.h"
+#include "SimpleMotion.h"
 #include "BitmapFactory.h"
 #include "FpsMeter.h"
 #include "Mesh.h"
+#include "ARlikeMotion.h"
+#define ENABLE_ARLIKE // uncomment and disenable ARlikeMotion
 
 PixelShader* pixelShader;
 FpsMeter* fpsMeter;
 Mesh* mesh;
+SimpleMotion* simpleMotion;
+ARlikeMotion* arlikeMotion;
 
 void setup(){
-  M5.begin();
+  M5.begin(); // This inludes Serial.begin(). Don't call it.
   delay(100);
-  // Serial.begin(115200); // Don't call it! M5.begin() includes it. If it is called again, some problems occcurs as freeze.
   pixelShader = new PixelShader();
   fpsMeter = new FpsMeter();
   mesh = new Mesh("/Shanghai.pmd");// File name should be ASCII
+#ifdef ENABLE_ARLIKE
+  arlikeMotion = new ARlikeMotion();
+  arlikeMotion->ReviseIMU();
+#else
+  simpleMotion = new SimpleMotion();
+#endif
 }
 
 void loop() {
+  const float IMU_update_period = 0.01f;  // [second]
   static float t = 0.0f;
+  static float screen_update_period = 0.1f;  // updated every loop
+  int divisor = mesh->numPolygon * IMU_update_period / screen_update_period + 1;
   Matrix matrix, matrixR;
-  MatrixFactory::CreateMatrix(&matrix, &matrixR, t);
+#ifdef ENABLE_ARLIKE
+  arlikeMotion->CreateMatrix(&matrix, &matrixR);
+#else
+  simpleMotion->CreateMatrix(&matrix, &matrixR, t);
+#endif
   for (int i = 0; i < mesh->numVertex; ++i) {
     Affine::Dot(&matrix, &mesh->pos0[i], &mesh->pos[i]);
     Affine::Dot(&matrixR, &mesh->normal0[i], &mesh->normal[i]);
@@ -32,6 +48,9 @@ void loop() {
   pixelShader->Clear(0x39E7); // gray  
   Polygon polygon;
   for (int i = 0; i < mesh->numPolygon; ++i) {
+#ifdef ENABLE_ARLIKE
+    if (i % divisor == 0) arlikeMotion->ReviseIMU();  // call per IMU_update_period
+#endif
     for (int j = 0; j < 3; ++j){
       uint16_t vertexIndex = mesh->vertexIndices[3*i + j];
       polygon.vertices[j] = mesh->pos[vertexIndex];
@@ -60,7 +79,8 @@ void loop() {
   pixelShader->Flip();
   fpsMeter->Run();
   Serial.println("FPS = " + String(fpsMeter->GetFps()));
-  t += 1.0f/fpsMeter->GetFps();
+  screen_update_period = 1.0f/fpsMeter->GetFps();
+  t += screen_update_period;
 
 ///// if you want to create bitmap, comment out below /////
 //  BitmapFactory::CreateBitmap(pixelShader->backBuffer, "/SS.bmp", pixelShader->_height, pixelShader->_width);
