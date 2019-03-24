@@ -34,6 +34,7 @@ You can specify a PMD file in SD card in M5StackFIRE_MMD.ino as "mesh = new Mesh
 - You can use favorite PMD files. You find many PMD files on the Web. You may have to modify the data to satisfy restrictions for M5StackFIRE_MMD as below.<br>
   Restriction 1 : PMD file name and Texture file name must be ASCII.<br>
   Restriction 2 : Texture file type must be be 16bit ARGB(1-5-5-5) 128x128 pixel BITMAP.<br>
+  Restriction 3 : Use not PMX file but PMD file. You can convert each other by PMXEditor.<br>
   <b><font color= "#ff0000">Notice : Follow the TERMS OF USE of each 3D model when you use 3D models.</font></b>
 - Rendering speed : About 27000 polygons per second.<br>
   
