@@ -19,6 +19,8 @@ void setup(){
   pixelShader = new PixelShader();
   fpsMeter = new FpsMeter();
   mesh = new Mesh("/dog.pmd");// File name should be ASCII
+  //mesh = new Mesh("/kirby.pmd");
+  //mesh = new Mesh("/ghoul.pmd");
 #ifdef ENABLE_ARLIKE
   arlikeMotion = new ARlikeMotion();
   arlikeMotion->ReviseIMU();
