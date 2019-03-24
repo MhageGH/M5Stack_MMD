@@ -27,9 +27,9 @@ M5Stack FIRE has 4M PSRAM. It can realize to draw any 3D models in SD card.
 Example models are in /Model directory in this repository. 
 Put PMD files and BMP files into root directory in your SD card.
 You can specify a PMD file in SD card in M5StackFIRE_MMD.ino as "mesh = new Mesh("/dog.pmd");"<br>
- ![dog](doc/dog.png)<br>
+ ![dog](doc/dog0.png)<br>
 - You can move, rotate, or scale the 3D model by moving M5Stack body like AR. This is realized by 6-axis sensor mounted in M5Stack FIRE.
- ![AR](doc/ARlikeMotion.png)<br>
+ ![AR](doc/ARlikeMotion0.png)<br>
 - You can save the screen as bitmap file to SD card by uncomment the last lines in M5StackFIRE_MMD.ino.
 - You can use favorite PMD files. You find many PMD files on the Web. You may have to modify the data to satisfy restrictions for M5StackFIRE_MMD as below.<br>
   Restriction 1 : PMD file name and Texture file name must be ASCII.<br>
