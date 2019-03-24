@@ -42,3 +42,6 @@ You can specify a PMD file in SD card in M5StackFIRE_MMD.ino as "mesh = new Mesh
 - use [Gimp](https://www.gimp.org/) to convert texture file.
 - use [Pmxeditor](http://kkhk22.seesaa.net/category/14045227-1.html) to rename texture file (Japanse -> ASCII).<br>
  ![PMXEditor](doc/PMXEditor.png)
+
+## Theory
+see [【ゆっくり解説】 PICマイコンでMMD 【電子工作】](https://www.nicovideo.jp/watch/sm21224686) to learn 3D rendering by microcontroller. (In Japanse)
