@@ -24,14 +24,18 @@ note: This code includes MMD model data (PMD file) as constant arrays. Normal M5
 
 ## About M5StackFIRE_MMD
 M5Stack FIRE has 4M PSRAM. It can realize to draw any 3D models in SD card.
-- You can move, rotate, or scale the 3D model by moving M5Stack body like AR.
+Example models are in /Model directory in this repository. 
+Put PMD files and BMP files into root directory in your SD card.
+You can specify a PMD file in SD card in M5StackFIRE_MMD.ino as "mesh = new Mesh("/dog.pmd");"<br>
+ ![dog](doc/dog.png)<br>
+- You can move, rotate, or scale the 3D model by moving M5Stack body like AR. This is realized by 6-axis sensor mounted in M5Stack FIRE.
+ ![AR](doc/ARlikeMotion.png)<br>
 - You can save the screen as bitmap file to SD card by uncomment the last lines in M5StackFIRE_MMD.ino.
-- You can specify PMD file in SD card in M5StackFIRE_MMD.ino<br>
-  　：　mesh = new Mesh("/Shanghai.pmd");<br>
-  PMD file name and Texture file name must be ASCII.<br>
-  Texture file type must be be 16bit ARGB(1-5-5-5) 128x128 pixel BITMAP.
+- You can use favorite PMD files. You find many PMD files on the Web. You may have to modify the data to satisfy restrictions for M5StackFIRE_MMD as below.<br>
+  Restriction 1 : PMD file name and Texture file name must be ASCII.<br>
+  Restriction 2 : Texture file type must be be 16bit ARGB(1-5-5-5) 128x128 pixel BITMAP.<br>
+  <b><font color= "#ff0000">Notice : Follow the TERMS OF USE of each 3D model when you use 3D models.</font></b>
 - Rendering speed : About 27000 polygons per second.<br>
-  see the [movie](https://twitter.com/Tw_Mhage/status/1035519200834465792) (The model includes 8880 polygon)
   
 ## About MMD
 - see [VPVP wiki](https://www6.atwiki.jp/vpvpwiki) to know MMD

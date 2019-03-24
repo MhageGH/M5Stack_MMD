@@ -7,8 +7,6 @@
 PixelShader* pixelShader;
 PmdLoader* pmdLoader = 0;
 
-// GitHub Desktop test
-
 bool bitmap_out = false;  // if you need to output bitmap file to SD card, enable it.
 
 void setup(){
@@ -16,7 +14,7 @@ void setup(){
   delay(100);
   //Serial.begin(115200); // Don't call it! M5.begin() includes it. If it is called again, some problems occcurs as freeze.
   pixelShader = new PixelShader();
-  pmdLoader = new PmdLoader(Shanghai_pmd);
+  pmdLoader = new PmdLoader(dog_pmd);
 }
 
 void loop() {
