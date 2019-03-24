@@ -21,6 +21,7 @@ void setup(){
   mesh = new Mesh("/dog.pmd");// File name should be ASCII
   //mesh = new Mesh("/kirby.pmd");
   //mesh = new Mesh("/ghoul.pmd");
+  //mesh = new Mesh("/flower.pmd");
 #ifdef ENABLE_ARLIKE
   arlikeMotion = new ARlikeMotion();
   arlikeMotion->ReviseIMU();
