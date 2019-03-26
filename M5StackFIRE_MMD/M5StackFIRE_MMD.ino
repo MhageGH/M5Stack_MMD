@@ -22,6 +22,9 @@ void setup(){
   //mesh = new Mesh("/kirby.pmd");
   //mesh = new Mesh("/ghoul.pmd");
   //mesh = new Mesh("/flower.pmd");
+  //mesh = new Mesh("/cake.pmd");
+  //mesh = new Mesh("/teto.pmd");
+  //mesh = new Mesh("/bouquet.pmd");
 #ifdef ENABLE_ARLIKE
   arlikeMotion = new ARlikeMotion();
   arlikeMotion->ReviseIMU();
