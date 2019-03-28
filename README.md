@@ -29,7 +29,7 @@ Put PMD files and BMP files into root directory in your SD card.
 - You can rotate the 3D model by moving M5Stack body like AR. This is realized by 6-axis sensor mounted in M5Stack FIRE.<br>
  ![AR](doc/ARlikeMotion0.png)<br>
 - You can change scale or change the 3D model by button.<br>
- ![Button](doc/Button.png)<br>
+ ![Button](doc/button.png)<br>
 - You can save the screen as bitmap file to SD card by uncomment the last lines in M5StackFIRE_MMD.ino.
 - You can use favorite PMD files. You find many PMD files on the Web. You may have to modify the data to satisfy restrictions for M5StackFIRE_MMD as below.<br>
   Restriction 1 : PMD file name and Texture file name must be ASCII.<br>
