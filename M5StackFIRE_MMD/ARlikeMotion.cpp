@@ -14,7 +14,7 @@ void ARlikeMotion::CreateMatrix(Matrix* matrix, Matrix* matrixR) {
   matrixR->m41 = 0; matrixR->m42 = 0; matrixR->m43 = 0; matrixR->m44 = 1;
   Affine::CreateTranslationMatrix(120, 100, 0, &matrixT);   // centering for screen
   Affine::CreateTranslationMatrix(0, -65, 0, &matrixT0);    // centering for rotation axis
-  Affine::CreateScalingMatrix(18, &matrixScale);
+  Affine::CreateScalingMatrix(scale, &matrixScale);
   Affine::Dot(&matrixT, matrixR, &matrixTR);
   Affine::Dot(&matrixTR, &matrixT0, &matrixTRT0);
   Affine::Dot(&matrixTRT0, &matrixScale, matrix);

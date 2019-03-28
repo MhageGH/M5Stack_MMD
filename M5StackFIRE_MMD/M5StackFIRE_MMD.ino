@@ -5,7 +5,6 @@
 #include "FpsMeter.h"
 #include "Mesh.h"
 #include "ARlikeMotion.h"
-#define ENABLE_ARLIKE // uncomment and disenable ARlikeMotion
 
 PixelShader* pixelShader;
 FpsMeter* fpsMeter;
@@ -13,37 +12,36 @@ Mesh* mesh;
 SimpleMotion* simpleMotion;
 ARlikeMotion* arlikeMotion;
 
+char filenames[][32] = {"/dog.pmd", "/kirby.pmd", "/ghoul.pmd", "/flower.pmd", "/cake.pmd", "/teto.pmd", "/bouquet.pmd"}; // File name should be ASCII
+char fileNumber = 0;
+
 void setup(){
   M5.begin(); // This inludes Serial.begin(). Don't call it.
   delay(100);
   pixelShader = new PixelShader();
   fpsMeter = new FpsMeter();
-  mesh = new Mesh("/dog.pmd");// File name should be ASCII
-  //mesh = new Mesh("/kirby.pmd");
-  //mesh = new Mesh("/ghoul.pmd");
-  //mesh = new Mesh("/flower.pmd");
-  //mesh = new Mesh("/cake.pmd");
-  //mesh = new Mesh("/teto.pmd");
-  //mesh = new Mesh("/bouquet.pmd");
-#ifdef ENABLE_ARLIKE
+  mesh = new Mesh(filenames[fileNumber]);
   arlikeMotion = new ARlikeMotion();
   arlikeMotion->ReviseIMU();
-#else
-  simpleMotion = new SimpleMotion();
-#endif
+  //simpleMotion = new SimpleMotion();  // you can use it instead of arlikeMotion
 }
 
 void loop() {
-  const float IMU_update_period = 0.01f;  // [second]
+  M5.update();
+  if (M5.BtnA.wasReleased()) arlikeMotion->scale *= 1.2;
+  if (M5.BtnB.wasReleased()) arlikeMotion->scale /= 1.2;
+  if (M5.BtnC.wasReleased()) {
+    delete mesh;
+    fileNumber = (fileNumber + 1) % (sizeof(filenames) / 32);
+    mesh = new Mesh(filenames[fileNumber]);
+  }
+  const float IMU_update_period = 0.01f;  // [second] 
   static float t = 0.0f;
   static float screen_update_period = 0.1f;  // updated every loop
   int divisor = mesh->numPolygon * IMU_update_period / screen_update_period + 1;
   Matrix matrix, matrixR;
-#ifdef ENABLE_ARLIKE
   arlikeMotion->CreateMatrix(&matrix, &matrixR);
-#else
-  simpleMotion->CreateMatrix(&matrix, &matrixR, t);
-#endif
+  //simpleMotion->CreateMatrix(&matrix, &matrixR, t); 
   for (int i = 0; i < mesh->numVertex; ++i) {
     Affine::Dot(&matrix, &mesh->pos0[i], &mesh->pos[i]);
     Affine::Dot(&matrixR, &mesh->normal0[i], &mesh->normal[i]);
@@ -54,9 +52,7 @@ void loop() {
   pixelShader->Clear(0x39E7); // gray  
   Polygon polygon;
   for (int i = 0; i < mesh->numPolygon; ++i) {
-#ifdef ENABLE_ARLIKE
     if (i % divisor == 0) arlikeMotion->ReviseIMU();  // call per IMU_update_period
-#endif
     for (int j = 0; j < 3; ++j){
       uint16_t vertexIndex = mesh->vertexIndices[3*i + j];
       polygon.vertices[j] = mesh->pos[vertexIndex];

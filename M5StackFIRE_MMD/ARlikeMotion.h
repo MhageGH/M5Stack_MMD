@@ -10,6 +10,7 @@ public :
     ARlikeMotion();
     void CreateMatrix(Matrix* matrix, Matrix* matrixR);
     void ReviseIMU();
+    float scale = 18;
 };
 
 #endif //_ARLIKEMOTION_H
