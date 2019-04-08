@@ -1,5 +1,4 @@
-#ifndef _SIMPLEMOTION_H
-#define _SIMPLEMOTION_H
+#pragma once
 #include "Affine.h"
 
 class SimpleMotion {
@@ -15,6 +14,4 @@ public :
     Affine::Dot(&matrixTR, &matrixScale, matrix);
   }
 };
-
-#endif // _SIMPLEMOTION_H
 

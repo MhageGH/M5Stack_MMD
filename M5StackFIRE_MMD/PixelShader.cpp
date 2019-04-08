@@ -1,22 +1,30 @@
 #include "PixelShader.h"
+#include "Blit.h"
 
 PixelShader::PixelShader(Vector light0) : Height(240), Width(320), _height(180), _width(240), minZ(-32768), txHeight(128), txWidth(128) {
   backBuffer = (uint16_t*)ps_malloc(sizeof(uint16_t)*_height*_width);
+  frontBuffer = (uint16_t*)ps_malloc(sizeof(uint16_t)*_height*_width);
   zBuffer = (int16_t*)ps_malloc(sizeof(int16_t)*_height*_width);
   txBuffer = (uint16_t*)ps_malloc(sizeof(uint16_t*)*txHeight*txWidth);
   for (int i = 0; i < _height*_width; ++i) backBuffer[i] = 0;
+  for (int i = 0; i < _height*_width; ++i) frontBuffer[i] = 0;
   for (int i = 0; i < _height*_width; ++i) zBuffer[i] = minZ;
   light = light0;
+  blit::Setup();
 }
 
 PixelShader::~PixelShader() {
   free(backBuffer);
+  free(frontBuffer);
   free(zBuffer);
   free(txBuffer);
 }
 
 void PixelShader::Flip() {
-  M5.Lcd.drawBitmap((Width - _width)/2, (Height - _height)/2, _width, _height, (uint8_t*)backBuffer);
+  uint16_t* temp = backBuffer;
+  backBuffer = frontBuffer;
+  frontBuffer = temp;
+  blit::Request((Width - _width)/2, (Height - _height)/2, _width, _height, frontBuffer, 0, 1);
 }
 
 void PixelShader::Clear(uint16_t color) {

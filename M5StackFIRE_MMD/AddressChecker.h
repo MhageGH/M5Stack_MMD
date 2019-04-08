@@ -1,5 +1,4 @@
-#ifndef _ADDRESSCHECKER_H
-#define _ADDRESSCHECKER_H
+#pragma once
 
 // for test
 class AddressChecker {
@@ -14,4 +13,3 @@ public :
   }
 };
 
-#endif // _ADDRESSCHECKER_H

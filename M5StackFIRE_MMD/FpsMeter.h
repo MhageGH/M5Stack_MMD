@@ -1,3 +1,5 @@
+#pragma once
+
 class FpsMeter {
   hw_timer_t* timer;
   float fps;

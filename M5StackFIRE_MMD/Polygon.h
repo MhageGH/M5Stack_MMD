@@ -1,5 +1,4 @@
-#ifndef _POLYGON_H
-#define _POLYGON_H
+#pragma once
 
 #include "Affine.h"
 
@@ -24,4 +23,3 @@ public :
   byte imageData[2*128*2*128];
 };
 
-#endif // _POLYGON_H

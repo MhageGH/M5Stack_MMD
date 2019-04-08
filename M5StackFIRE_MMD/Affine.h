@@ -1,5 +1,4 @@
-#ifndef _AFFINE_H
-#define _AFFINE_H
+#pragma once
 
 #include <M5Stack.h>
 
@@ -38,5 +37,3 @@ public :
   static void CreateScalingMatrix(float scale, Matrix* matrixOut);
   static void Normalize(Vector* vector);  // ignore w component
 };
-
-#endif // _AFFINE_H

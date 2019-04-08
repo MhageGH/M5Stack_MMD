@@ -1,5 +1,4 @@
-#ifndef _QUATERNIONFILTERS_H_
-#define _QUATERNIONFILTERS_H_
+#pragma once
 
 #include <Arduino.h>
 
@@ -14,4 +13,3 @@ void MahonyQuaternionUpdate2(float ax, float ay, float az, float gx, float gy,
 const float * getQ2();
 const float * getR2();
 
-#endif // _QUATERNIONFILTERS_H_

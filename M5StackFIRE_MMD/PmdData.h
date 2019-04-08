@@ -1,5 +1,4 @@
-#ifndef _PMDDATA_H
-#define _PMDDATA_H
+#pragma once
 
 const int PmdHeaderSize = 1*3 + 4*1 + 1*20 + 1*256;
 const int PmdVertexSize = 4*3 + 4*3 + 4*2 + 2*2 + 1*1 + 1*1;
@@ -37,4 +36,3 @@ public:
   PmdMaterial() { for (int i = 0; i < 20; ++i) texture_file_name[i] = 0; }
 };
 
-#endif // _PMDDATA_H

@@ -1,5 +1,4 @@
-#ifndef _ARLIKEMOTION_H
-#define _ARLIKEMOTION_H
+#pragma once
 #include "utility/MPU9250.h"
 #include "quaternionFilters2.h"
 #include "Affine.h"
@@ -12,5 +11,3 @@ public :
     void ReviseIMU();
     float scale = 18;
 };
-
-#endif //_ARLIKEMOTION_H

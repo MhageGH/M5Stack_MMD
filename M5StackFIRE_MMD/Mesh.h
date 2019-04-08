@@ -1,5 +1,5 @@
-#ifndef _MESH_H
-#define _MESH_H
+#pragma once
+
 #include "Polygon.h"
 #include "PmdLoader.h"
 
@@ -22,4 +22,3 @@ public:
   ~Mesh();
 };
 
-#endif // _MESH_H

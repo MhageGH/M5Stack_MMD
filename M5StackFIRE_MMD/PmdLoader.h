@@ -1,5 +1,4 @@
-#ifndef _PMDLOADER_H
-#define _PMDLOADER_H
+#pragma once
 
 #include <M5Stack.h>
 #include "PmdData.h"
@@ -32,4 +31,3 @@ public :
   void GetTextures(Material* materials, Texture* textures);
 };
 
-#endif // _PMDLOADER_H

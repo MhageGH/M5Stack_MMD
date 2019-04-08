@@ -1,5 +1,4 @@
-#ifndef _BITMAPFACTORY_H
-#define _BITMAPFACTORY_H
+#pragma once
 
 #include <M5Stack.h>
 
@@ -44,5 +43,3 @@ public :
     file.close();
   }
 };
-
-#endif // _BITMAPFACTORY_H
