@@ -1,7 +1,7 @@
 #ifndef _PIXELSHADER_H
 #define _PIXELSHADER_H
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include "Polygon.h"
 
 class PixelShader {

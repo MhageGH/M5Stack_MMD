@@ -1,19 +1,19 @@
 #ifndef _AFFINE_H
 #define _AFFINE_H
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 
-class Point {
+class MyPoint {
 public: 
   int16_t X, Y;
-  Point(int16_t X0 = 0, int16_t Y0 =  0) : X(X0), Y(Y0) {}
+  MyPoint(int16_t X0 = 0, int16_t Y0 =  0) : X(X0), Y(Y0) {}
 };
 
 class Vector {  // column vector
 public : 
   float x, y, z, w;
   Vector(float x0 = 0, float y0 = 0, float z0 = 0, float w0 = 1) : x(x0), y(y0), z(z0), w(w0) {}
-  Point ToPoint() { return Point((int16_t)x, (int16_t)y); }
+  MyPoint ToMyPoint() { return MyPoint((int16_t)x, (int16_t)y); }
 };
 
 class Matrix {

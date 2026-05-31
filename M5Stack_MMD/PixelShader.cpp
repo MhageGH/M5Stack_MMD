@@ -76,8 +76,8 @@ void PixelShader::DrawPolygon(Polygon* polygon, bool gouraud, bool texture) {
     plainColor = DecayBrightness(material.color, -Affine::Dot(&light, &(polygon->normal[0])));
   }
   if (!textureFileAvailable) texture = false;
-  Point p[3];
-  for (int i = 0; i < 3; ++i) p[i] = polygon->vertices[i].ToPoint();
+  MyPoint p[3];
+  for (int i = 0; i < 3; ++i) p[i] = polygon->vertices[i].ToMyPoint();
   int32_t x0 = p[0].X;
   int32_t y0 = p[0].Y;
   int32_t x1 = p[1].X;
@@ -145,7 +145,7 @@ void PixelShader::DrawHLine(int32_t x, int32_t y, int32_t w, Polygon* polygon, b
 
   float _x, _y, u0, v0, u1, v1, z0, z1, z, dz, brightness0, brightness1, brightness, dbrightness;
   // start of line (A part of polygon may be out of screen. So the start and end is not always on triangle outline.)
-  _x = (float)x - polygon->vertices[0].x; // a point of reference is vertices[0].
+  _x = (float)x - polygon->vertices[0].x; // a MyPoint of reference is vertices[0].
   _y = (float)y - polygon->vertices[0].y;
   u0 = (_x*V.y - _y*V.x)/(U.x*V.y - U.y*V.x);
   v0 = (-_x*U.y + _y*U.x)/(U.x*V.y - U.y*V.x);

@@ -1,7 +1,7 @@
 #ifndef _BITMAPFACTORY_H
 #define _BITMAPFACTORY_H
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 
 class BitmapFactory {
   BitmapFactory();

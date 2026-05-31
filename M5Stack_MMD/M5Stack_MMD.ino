@@ -1,4 +1,4 @@
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include "PixelShader.h"
 #include "PmdLoader.h"
 #include "MatrixFactory.h"
@@ -14,7 +14,7 @@ void setup(){
   delay(100);
   //Serial.begin(115200); // Don't call it! M5.begin() includes it. If it is called again, some problems occcurs as freeze.
   pixelShader = new PixelShader();
-  pmdLoader = new PmdLoader(dog_pmd);
+  pmdLoader = new PmdLoader(pmd_file);
 }
 
 void loop() {
@@ -39,7 +39,7 @@ void loop() {
   }
   pixelShader->Flip();
   ++t;
-  delay(10);
+  delay(1);
   if (bitmap_out){
     BitmapFactory::CreateBitmap(pixelShader->backBuffer, "/SS.bmp", pixelShader->_height, pixelShader->_width);
     Serial.println("Bitmap Output finished");

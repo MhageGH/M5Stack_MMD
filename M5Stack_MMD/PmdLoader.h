@@ -1,7 +1,7 @@
 #ifndef _PMDLOADER_H
 #define _PMDLOADER_H
 
-#include <M5Stack.h>
+#include <M5Core2.h>
 #include "PmdData.h"
 #include "Polygon.h"
 
